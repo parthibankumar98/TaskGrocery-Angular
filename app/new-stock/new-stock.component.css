@@ -1,0 +1,180 @@
+.new-stock-container {
+  width: 95vw;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header container styling */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+::ng-deep .p-tabview-nav li:nth-child(2) a {
+  background-color: #c2b0f3 !important;
+}
+
+.add-stock-button {
+  background-color: #ff8c00;
+  color: white;
+  border-color: #ff8c00;
+}
+
+.add-stock-button:hover {
+  background-color: #45a049;
+  transition: background-color 0.3s ease;
+}
+.delete-button {
+  background-color: #f15e53;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #bdb8b8;
+}
+
+td button {
+  margin-right: 10px;
+}
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.dialog-content p {
+  margin: 5px 0;
+  width: 100%;
+  text-align: left;
+}
+
+.dialog-content input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.save-button,
+.cancel-button {
+  width: 45%;
+}
+.save-button:hover,
+.cancel-button:hover {
+  background-color: #45a049;
+  transition: background-color 0.3s ease;
+}
+
+.new-stock-container {
+  width: 95vw;
+  max-width: 1760px;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  margin: 0 auto;
+}
+
+.new-stock-container table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.new-stock-container th,
+.new-stock-container td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+.new-stock-container th {
+  background-color: #f5f5f5;
+  font-weight: bold; /* Bold header text */
+}
+
+.new-stock-container td:last-child {
+  text-align: center; /* Center align actions */
+}
+
+.new-stock-container tr:last-child td {
+  border-bottom: none; /* Remove last row bottom border */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .new-stock-container {
+    padding: 10px; /* Reduce padding on smaller screens */
+  }
+
+  .new-stock-container th,
+  .new-stock-container td {
+    padding: 5px; /* Reduce padding for table cells */
+  }
+}
+
+::ng-deep .confirmation-message {
+  color: rgb(201, 0, 0);
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  padding-left: 20px;
+}
+::ng-deep .pi-exclamation-triangle {
+  color: rgb(201, 0, 0);
+}
+
+.confirmation-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.confirm-button,
+.cancel-button {
+  flex: 1;
+  margin: 0 10px;
+  color: black;
+}
+.confirm-button:hover,
+.cancel-button:hover {
+  background-color: #686767;
+  color: white;
+}

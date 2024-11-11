@@ -1,0 +1,23 @@
+.slideshow {
+  position: relative;
+  overflow: hidden; /* Ensures no overflow beyond the slideshow */
+}
+
+.slideshow img {
+  width: 100%; /* Responsive */
+  height: 100vh; /* Maintain aspect ratio */
+  display: none; /* Hide all images */
+  opacity: 0; /* Start with no visibility */
+  transition: opacity 2s ease-in-out; /* Smooth transition for opacity */
+  animation: fade 1s ease-in-out; /* Smooth transition for opacity */
+  border-radius: 10px; /* Add border radius */
+}
+
+.slideshow img.active {
+  display: block; /* Show active image */
+  opacity: 1; /* Make the active image visible */
+}
+
+.slideshow img:not(.active) {
+  transition: opacity 2s ease-in-out; /* Transition for non-active images */
+}

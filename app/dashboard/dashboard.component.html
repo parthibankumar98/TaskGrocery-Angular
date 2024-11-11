@@ -1,0 +1,84 @@
+<div class="dashboard-container">
+  <div [ngClass]="{ 'table-container-scroll': isDashboardVisible }" class="table-container">
+    <p-tabView (onChange)="onTabChange($event)">
+      <p-tabPanel header="Dashboard">
+        <div class="search-container">
+          <div class="advertise-board">
+            <p class="advertise-text">
+              <i class="pi pi-heart" style="margin-right: 8px;"></i>
+              Welcome to T Mart -- Best Groceries in Town!
+              <i class="pi pi-heart" style="margin-left: 8px;"></i>
+            </p>
+          </div>
+
+
+          <div class="search-box">
+            <input pInputText type="text" placeholder="Search by GroceryName" [(ngModel)]="searchTerm"
+              (keydown.enter)="onSearchProduct()" />
+            <button pButton type="button" icon="pi pi-search" class="search-button" label="Search"
+              (click)="onSearchProduct()"></button>
+          </div>
+        </div>
+
+
+        <p-table [value]="groceries">
+          <ng-template pTemplate="header">
+            <tr>
+              <th><b>Grocery Name</b></th>
+              <th><b>Category</b></th>
+              <th><b>More Details</b></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData>
+            <tr>
+              <td>{{ rowData.groceryName }}</td>
+              <td>{{ rowData.category }}</td>
+              <td>
+                <button pButton type="button" icon="pi pi-eye" class="orange-icon"
+                  (click)="showDialog(rowData)"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+        <p-dialog header="Product Details" [(visible)]="displayDialog" [modal]="true" [responsive]="true"
+          [style]="{ width: '400px' }" class="dialog-content">
+          <div *ngIf="selectedProduct" class="dialog">
+            <p><strong>Grocery ID :</strong> {{ selectedProduct.groceryId }}</p>
+            <p><strong>Name :</strong> {{ selectedProduct.groceryName }}</p>
+            <p><strong>Category :</strong> {{ selectedProduct.category }}</p>
+            <p>
+              <strong>Discount :</strong>
+              {{ selectedProduct.discountPercentage }}%
+            </p>
+            <p><strong>Stock :</strong> {{ selectedProduct.stockQuantity }}</p>
+          </div>
+          <p-footer class="dialog-footer">
+            <button pButton type="button" label="Close" (click)="displayDialog = false"></button>
+          </p-footer>
+        </p-dialog>
+      </p-tabPanel>
+
+      <p-dialog header="Alert" [(visible)]="displayAlertDialog" [modal]="true" [responsive]="true"
+        [style]="{ width: '400px' }" (onHide)="dialogMessage = ''">
+        <div>
+
+          <p><i class="pi pi-info-circle"></i>{{ dialogMessage }}</p>
+        </div>
+        <p-footer>
+          <button pButton type="button" label="OK" (click)="displayAlertDialog = false"></button>
+        </p-footer>
+      </p-dialog>
+
+      <p-tabPanel header="New Stock">
+        <div class="new-stock-container">
+          <app-new-stock></app-new-stock>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+
+  <div *ngIf="isDashboardVisible" class="slideshow-container">
+    <app-image-slideshow></app-image-slideshow>
+  </div>
+</div>

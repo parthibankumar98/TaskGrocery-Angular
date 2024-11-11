@@ -1,0 +1,96 @@
+<div class="new-stock-container">
+  <div class="header-container">
+    <h2><u>Grocery Stock</u></h2>
+
+    <!-- Button to open the form to add new stock -->
+    <button pButton type="button" label="Add New Stock" icon="pi pi-plus" (click)="openDialog()"
+      class="add-stock-button"></button>
+  </div>
+
+  <!-- Table to display existing stock -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Grocery ID</th>
+        <th>Grocery Name</th>
+        <th>Category</th>
+        <th>Stock Quantity</th>
+        <th>Discount (%)</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let grocery of groceries">
+        <td>{{ grocery.groceryId }}</td>
+        <td>{{ grocery.groceryName }}</td>
+        <td>{{ grocery.category }}</td>
+        <td>{{ grocery.stockQuantity }}</td>
+        <td>{{ grocery.discountPercentage }}</td>
+        <td>
+          <button pButton icon="pi pi-pencil" (click)="editStock(grocery)" label="Update"
+            class="update-button"></button>
+
+          <button pButton icon="pi pi-trash" (click)="confirmDelete(grocery.groceryId)" label="Delete"
+            class="delete-button"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Confirmation Dialog -->
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" [visible]="displayConfirmDialog"
+    (onHide)="displayConfirmDialog = false">
+    <ng-template pTemplate="message">
+      <p class="confirmation-message">
+        Delete this item?
+      </p>
+    </ng-template> <p-footer class="confirmation-footer">
+      <button type="button" pButton label="Yes" (click)="deleteStock(groceryIdToDelete!)" icon="pi pi-check"
+        class="confirm-button"></button>
+      <button type="button" pButton label="No" (click)="displayConfirmDialog = false" icon="pi pi-times"
+        class="cancel-button"></button>
+    </p-footer>
+  </p-confirmDialog>
+
+
+
+
+
+  <!-- Dialog to add new stock  and update stock -->
+  <p-dialog header="{{ isEditMode ? 'Update Stock' : 'Add New Stock' }}" [(visible)]="displayDialog" [modal]="true"
+    [responsive]="true" [style]="{ width: '400px' }">
+    <form #stockForm="ngForm" class="dialog-content">
+      <!-- Input fields remain unchanged -->
+      <p>Grocery Name:</p>
+      <input pInputText [(ngModel)]="newStock.groceryName" name="groceryName" required
+        placeholder="Enter Grocery Name" />
+
+      <p>Grocery ID:</p>
+      <input pInputNumber [(ngModel)]="newStock.groceryId" name="groceryId" required placeholder="Enter Grocery ID" />
+
+      <p>Category:</p>
+      <input pInputText [(ngModel)]="newStock.category" name="category" required placeholder="Enter Category" />
+
+      <p>Stock Quantity:</p>
+      <input pInputNumber [(ngModel)]="newStock.stockQuantity" name="stockQuantity" required
+        placeholder="Enter Stock Quantity" />
+
+      <p>Discount Percentage:</p>
+      <input pInputNumber [(ngModel)]="newStock.discountPercentage" name="discountPercentage" required
+        placeholder="Enter Discount Percentage" />
+
+      <p>Discount ID:</p>
+      <input pInputNumber [(ngModel)]="newStock.discountId" name="discountId" required
+        placeholder="Enter Discount ID" />
+
+      <p>Stock ID:</p>
+      <input pInputNumber [(ngModel)]="newStock.stockId" name="stockId" required placeholder="Enter Stock ID" />
+
+      <p-footer class="dialog-actions">
+        <button pButton type="button" label="Save" (click)="saveStock(stockForm)" class="save-button"></button>
+        <button pButton type="button" label="Cancel" (click)="displayDialog = false" class="cancel-button"></button>
+      </p-footer>
+    </form>
+  </p-dialog>
+
+</div>

@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+/* Override PrimeNG TabView styles globally */
+.p-tabview-nav {
+  background-color: #c2b0f3 !important; /* Desired nav bar color */
+}
+
+.p-tabview-nav .p-tabview-selected {
+  background-color: #c2b0f3 !important; /* Selected tab color */
+  color: rgb(5, 5, 5) !important;
+}
+
+.p-tabview-nav .p-tabview-title {
+  color: rgb(10, 10, 10) !important; /* Text color of the tabs */
+}
+
+.p-tabview-nav .p-tabview-title:hover {
+  color: #ffffff !important; /* Hover text color */
+}
